@@ -7,6 +7,8 @@ Inspired by opennsl-server by Ishida Wataru, I wanted to build a tools that expo
 Eventually I would like to convert this experiment into a quagga plugin so that it's all just inside one interface for convenience; I would aim to make it similar to how previous versions of openswitch worked, but without breaking fundamental BGP features (next-hop-self anyone?).
 
 ## Build
+    #Ensure you have all the dependancies installed before compiling
+    
     make
 
 ## Use
@@ -20,6 +22,7 @@ Eventually I would like to convert this experiment into a quagga plugin so that 
     i2cset -y 1 0x62 0x0e 0x00 b
     
     #initialise the kernel modules
+    cd <OPENNSL_DIR>
     rmmod linux-user-bde
     rmmod linux-bcm-knet
     rmmod linux-kernel-bde
@@ -36,6 +39,7 @@ Eventually I would like to convert this experiment into a quagga plugin so that 
     insmod linux-bcm-knet.ko
     
     3. Run OSH
+    cd <OPENNSL_MAN_DIR>
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:<OPENNSL_DIR>
     export OPENNSL_CONFIG_FILE=config.as5712
     ./osh
